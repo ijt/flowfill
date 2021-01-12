@@ -1,4 +1,4 @@
-import {html} from '/event/ui/node_modules/lit-html/lit-html.js';
+import {html} from './node_modules/lit-html/lit-html.js';
 
 /**
  * Lays out the given elements in elts, scaling them to all
