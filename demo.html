@@ -4,8 +4,39 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
-    This is just placeholder text.
+  <body style="height: 100vh; padding: 8px">
+    <script type="module">
+      import {html, render} from "./node_modules/lit-html/lit-html.js";
+      import {flowFill} from "./flowfill.js";
+
+      function update() {
+        let s = 8;
+        let W = document.body.clientWidth - 2*s;
+        let H = document.body.clientHeight - 2*s;
+        console.log('body dims:', W, H);
+        let elts = [];
+        for (let i = 0; i < 3; i++) {
+          let img = document.createElement('img');
+          img.src = 'http://placekitten.com/640/480';
+          img.style.objectFit = 'contain';
+          let e = {
+            tagName: 'IMG',
+            naturalWidth: img.naturalWidth || 1,
+            naturalHeight: img.naturalHeight || 1,
+            HTML: function (w, h) {
+              img.style.width = `${w}px`;
+              img.style.height = `${h}px`;
+              return html`${img}`;
+            }
+          };
+          elts.push(e);
+        }
+        let t = flowFill(elts, W, H, s);
+        render(t, document.body);
+      }
+
+      update();
+      window.onresize = update;
+    </script>
   </body>
 </html>
-
