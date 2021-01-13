@@ -4,13 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body style="height: 100vh; padding: 8px">
+  <style>
+      body {
+          height: 100vh;
+          padding: 0px;
+          margin: 0;
+      }
+  </style>
+  <body>
     <script type="module">
       import {html, render} from "./node_modules/lit-html/lit-html.js";
       import {flowFill} from "./flowfill.js";
 
       function update() {
-        let s = 8;
+        let s = 0;
         let W = document.body.clientWidth - 2*s;
         let H = document.body.clientHeight - 2*s;
         console.log('body dims:', W, H);
