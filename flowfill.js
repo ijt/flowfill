@@ -6,6 +6,25 @@ import {html} from './node_modules/lit-html/lit-html.js';
  * W and height H, with given spacing between them,
  * without spilling over.
  *
+ * The array parameter elts could be created like this:
+ *
+ * let elts = [];
+ * for (let i = 0; i < 9; i++) {
+ *   let img = document.createElement('img');
+ *   img.src = 'http://placekitten.com/640/480';
+ *   let e = {
+ *      tagName: 'IMG',
+ *      naturalWidth: img.naturalWidth || 1,
+ *      naturalHeight: img.naturalHeight || 1,
+ *      HTML: function (w, h) {
+ *        img.style.width = `${w}px`;
+ *        img.style.height = `${h}px`;
+ *        return html`${img}`;
+ *      }
+ *   };
+ *   elts.push(e);
+ * }
+ *
  * @param elts
  * @param W
  * @param H
